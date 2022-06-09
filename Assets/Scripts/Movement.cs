@@ -1,6 +1,4 @@
 using UnityEngine;
-using LanguageExt;
-
 public class Movement : MonoBehaviour
 {
     // Start is called before the first frame update
