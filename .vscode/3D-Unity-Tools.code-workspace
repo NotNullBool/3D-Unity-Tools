@@ -1,6 +1,13 @@
-﻿{
-    "files.exclude":
-    {
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.exclude":
+    	{
+		"**/*.csproj":true,
         "**/.DS_Store":true,
         "**/.git":true,
         "**/.gitmodules":true,
@@ -42,6 +49,7 @@
         "**/*.meta":true,
         "**/*.prefab":true,
         "**/*.unity":true,
+		"**/*.sln":true,
         "build/":true,
         "Build/":true,
         "Library/":true,
@@ -50,6 +58,8 @@
         "Obj/":true,
         "ProjectSettings/":true,
         "temp/":true,
-        "Temp/":true
-    }
+        "Temp/":true,
+		"omnisharp.json":true,
+		}
+	}
 }
