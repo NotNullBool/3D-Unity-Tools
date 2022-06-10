@@ -54,5 +54,6 @@
     "temp/":true,
     "Temp/":true,
     "omnisharp.json":true,
-    }
+    },
+    "editor.foldingImportsByDefault": true
 }
