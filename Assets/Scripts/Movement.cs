@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using static LanguageExt.Prelude;
 using UnityEngine;
+using ExtensionMethods;
 #endregion
 
 public class Movement : MonoBehaviour
@@ -25,7 +26,7 @@ public class Movement : MonoBehaviour
     /// </summary>
     void Start()
     {
-
+        Debug.Log(gameObject.GetAddComponent<Rigidbody>());
     }
 
     /// <summary>
