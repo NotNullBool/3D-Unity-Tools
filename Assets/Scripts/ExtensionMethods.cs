@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using static LanguageExt.Prelude;
 using UnityEngine;
 using System.Diagnostics.Contracts;
+using System;
 #endregion
 
 namespace ExtensionMethods
@@ -24,14 +25,23 @@ namespace ExtensionMethods
         
         #region Methods
         /// <summary>
-        /// Get component from current object if not add it
+        /// Get component from current object if not add it 
         /// </summary>
         /// <param name="gameObject"></param>
         /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
+        /// <returns><typeparamref name="T"/></returns>
         [Pure]
         public static T GetAddComponent<T>(this GameObject gameObject) where T : Component => 
         gameObject.GetComponent<T>().OutToVar(out var component) != null ? component : gameObject.AddComponent<T>();
+        /// <summary>
+        /// Get component from current object if not add it 
+        /// </summary>
+        /// <param name="gameObject"></param>
+        /// <param name="componentType"></param>
+        /// <returns><paramref name="componentType"/></returns>
+        public static Component GetAddComponent(this GameObject gameObject, Type componentType) => 
+        gameObject.GetComponent(componentType).OutToVar(out var component) != null ? component : gameObject.AddComponent(componentType);
+        
 
         /// <summary>
         /// Set this to a new variable.

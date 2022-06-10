@@ -18,15 +18,27 @@ public class Movement : MonoBehaviour
 {
     #region Variables
 
+    [SerializeField]
+    private Rigidbody rb;
+
     #endregion
     
     #region Methods
+
+    /// <summary>
+    /// <see cref="Awake"/> is called before Start
+    /// </summary>
+    void Awake()
+    {
+        rb = gameObject.GetAddComponent<Rigidbody>();
+    }
+
     /// <summary>
     /// <see cref="Start"/> is called before the first frame update
     /// </summary>
     void Start()
     {
-        Debug.Log(gameObject.GetAddComponent<Rigidbody>());
+        
     }
 
     /// <summary>
@@ -34,7 +46,7 @@ public class Movement : MonoBehaviour
     /// </summary>
     void Update()
     {
-        
+
     }
     #endregion Methods
 }
