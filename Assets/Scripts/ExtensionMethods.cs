@@ -32,7 +32,7 @@ namespace ExtensionMethods
         /// <returns><typeparamref name="T"/></returns>
         [Pure]
         public static T GetAddComponent<T>(this GameObject gameObject) where T : Component => 
-        gameObject.GetComponent<T>().OutToVar(out var component) != null ? component : gameObject.AddComponent<T>();
+        gameObject.GetComponent<T>().AddToScope(out var component) != null ? component : gameObject.AddComponent<T>();
         /// <summary>
         /// Get component from current object if not add it 
         /// </summary>
@@ -40,7 +40,7 @@ namespace ExtensionMethods
         /// <param name="componentType"></param>
         /// <returns><paramref name="componentType"/></returns>
         public static Component GetAddComponent(this GameObject gameObject, Type componentType) => 
-        gameObject.GetComponent(componentType).OutToVar(out var component) != null ? component : gameObject.AddComponent(componentType);
+        gameObject.GetComponent(componentType).AddToScope(out var component) != null ? component : gameObject.AddComponent(componentType);
         
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace ExtensionMethods
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         [Pure]
-        public static T OutToVar<T>(this T @this,out T obj) => obj = @this;
+        public static T AddToScope<T>(this T @this,out T obj) => obj = @this;
         #endregion Methods
     }
 }
