@@ -32,7 +32,7 @@ namespace ExtensionMethods
         /// <returns><typeparamref name="T"/></returns>
         [Pure]
         public static T GetAddComponent<T>(this GameObject gameObject) where T : Component => 
-        gameObject.GetComponent<T>().AddToScope(out var component) != null ? component : gameObject.AddComponent<T>();
+        gameObject.GetComponent<T>().NullObjToNull() ?? gameObject.AddComponent<T>();
         /// <summary>
         /// Get component from current object if not add it 
         /// </summary>
@@ -40,7 +40,7 @@ namespace ExtensionMethods
         /// <param name="componentType"></param>
         /// <returns><paramref name="componentType"/></returns>
         public static Component GetAddComponent(this GameObject gameObject, Type componentType) => 
-        gameObject.GetComponent(componentType).AddToScope(out var component) != null ? component : gameObject.AddComponent(componentType);
+        gameObject.GetComponent(componentType).NullObjToNull() ?? gameObject.AddComponent(componentType);
         
 
         /// <summary>
@@ -53,6 +53,16 @@ namespace ExtensionMethods
         /// <returns></returns>
         [Pure]
         public static T AddToScope<T>(this T @this,out T obj) => obj = @this;
+
+        /// <summary>
+        /// Convert Unity Null Object to System Null
+        /// Useful to use ?? and ??= operators
+        /// </summary>
+        /// <param name="this"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns><typeparamref name="T"/></returns>
+        [Pure]
+        public static T NullObjToNull<T>(this T @this) where T : UnityEngine.Object => !@this ? null : @this as T; 
         #endregion Methods
     }
 }
