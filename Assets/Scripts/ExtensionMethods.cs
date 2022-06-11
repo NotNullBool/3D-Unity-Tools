@@ -39,8 +39,12 @@ namespace ExtensionMethods
         /// <param name="gameObject"></param>
         /// <param name="componentType"></param>
         /// <returns><paramref name="componentType"/></returns>
+        [Pure]
         public static Component GetAddComponent(this GameObject gameObject, Type componentType) => 
         gameObject.GetComponent(componentType).NullObjToNull() ?? gameObject.AddComponent(componentType);
+
+        public static T IfNullGetAddComponent<T>(this GameObject gameObject, T maybeComponent) where T : Component => 
+        maybeComponent.NullObjToNull() ?? gameObject.GetAddComponent<T>(); 
         
 
         /// <summary>
@@ -50,7 +54,7 @@ namespace ExtensionMethods
         /// <param name="this"></param>
         /// <param name="obj"></param>
         /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
+        /// <returns><param name="this"/></returns>
         [Pure]
         public static T AddToScope<T>(this T @this,out T obj) => obj = @this;
 
