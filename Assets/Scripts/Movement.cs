@@ -19,7 +19,9 @@ public class Movement : MonoBehaviour
     #region Variables
 
     [SerializeField]
-    private Rigidbody rb;
+    private Rigidbody rigidBody;
+    [SerializeField]
+    private CharacterController characterController;
 
     #endregion
     
@@ -30,7 +32,10 @@ public class Movement : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        rb = gameObject.GetAddComponent<Rigidbody>();
+        rigidBody = gameObject.IfNullGetAddComponent(rigidBody);
+        rigidBody.freezeRotation = true;
+        
+        characterController =  gameObject.IfNullGetAddComponent(characterController);
     }
 
     /// <summary>
@@ -46,7 +51,8 @@ public class Movement : MonoBehaviour
     /// </summary>
     void Update()
     {
-
+        float speed = 1f * Time.deltaTime ;
+        characterController.Move(transform.forward * speed);
     }
     #endregion Methods
 }
